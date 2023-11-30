@@ -10,6 +10,10 @@ const initialState = {
 
   loading: false,
   categories: [],
+
+  systemAdminSidebar: true,
+  pharmacyAdminSidebar: true,
+  cashierSidebar: true,
 };
 
 const GlobalContext = createContext();

@@ -7,7 +7,12 @@ import { useGlobalContext } from '../../contexts/GlobalContext';
 import SystemAdminCreatePharmacy from './SystemAdminCreatePharmacy';
 import SystemAdminDeletePharmacy from './SystemAdminDeletePharmacy';
 import SystemAdminUpdatePharmacy from './SystemAdminUpdatePharmacy';
-import { STOP_LOADING, START_LOADING } from '../../utils/actions';
+import {
+  STOP_LOADING,
+  START_LOADING,
+  CLOSE_SYSTEM_ADMIN_SIDEBAR,
+  OPEN_SYSTEM_ADMIN_SIDEBAR,
+} from '../../utils/actions';
 
 const SystemAdminPharmacies = () => {
   const [pharmacies, setPharmacies] = useState([]);
@@ -24,7 +29,7 @@ const SystemAdminPharmacies = () => {
   });
 
   const { axiosPrivate } = useAuthContext();
-  const { dispatch } = useGlobalContext();
+  const { systemAdminSidebar, dispatch } = useGlobalContext();
 
   const getAllPharmacies = async () => {
     try {
@@ -48,12 +53,14 @@ const SystemAdminPharmacies = () => {
     getAllPharmacies();
   }, [name, page]);
 
-  // if (loading) {
-  //   return <h1>Loading...</h1>;
-  // }
-
   return (
-    <Wrapper>
+    <Wrapper style={{ width: `${systemAdminSidebar ? '85%' : '95%'}` }}>
+      <button onClick={() => dispatch({ type: CLOSE_SYSTEM_ADMIN_SIDEBAR })}>
+        close
+      </button>
+      <button onClick={() => dispatch({ type: OPEN_SYSTEM_ADMIN_SIDEBAR })}>
+        open
+      </button>
       <header className='dashboard-header'>
         <h1>All pharmacies</h1>
         <input
@@ -71,7 +78,6 @@ const SystemAdminPharmacies = () => {
         <table className='dashboard-table'>
           <thead>
             <tr>
-              {' '}
               <th>Name</th>
               <th>Email</th>
               <th>Hourly</th>
@@ -150,6 +156,5 @@ const SystemAdminPharmacies = () => {
 export default SystemAdminPharmacies;
 
 const Wrapper = styled.section`
-  width: 85%;
   padding: 20px;
 `;

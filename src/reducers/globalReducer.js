@@ -4,6 +4,8 @@ import {
   START_LOADING,
   STOP_LOADING,
   ADD_TO_CART,
+  OPEN_SYSTEM_ADMIN_SIDEBAR,
+  CLOSE_SYSTEM_ADMIN_SIDEBAR,
 } from '../utils/actions';
 
 const globalReducer = (state, action) => {
@@ -35,6 +37,14 @@ const globalReducer = (state, action) => {
 
   if (action.type === SET_CATEGORIES) {
     return { ...state, categories: action.payload };
+  }
+
+  if (action.type === OPEN_SYSTEM_ADMIN_SIDEBAR) {
+    return { ...state, systemAdminSidebar: true };
+  }
+
+  if (action.type === CLOSE_SYSTEM_ADMIN_SIDEBAR) {
+    return { ...state, systemAdminSidebar: false };
   }
 
   return new Error(`No matching "${action.type}" - action type`);
