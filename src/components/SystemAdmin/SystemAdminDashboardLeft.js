@@ -142,6 +142,19 @@ const SystemAdminDashboardLeft = () => {
             />
           </svg>
         </NavLink>
+        {/* <div
+          className='test'
+          style={{
+            background: 'red',
+            display: 'grid',
+            gridTemplateColumns: '0% 0% 100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <p style={{ background: 'blue' }}>one</p>
+          <p style={{ background: 'pink' }}>two</p>
+          <p style={{ background: 'green', paddingLeft: '20px' }}>three</p>
+        </div> */}
       </div>
     </Wrapper>
   );
@@ -150,12 +163,8 @@ const SystemAdminDashboardLeft = () => {
 export default SystemAdminDashboardLeft;
 
 const Wrapper = styled.section`
-  /* background-color: red; */
-  /* width: 20%; */
   overflow: hidden;
   display: flex;
-  /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
-  /* border-radius: 0 50px 50px 0px; */
   margin-right: 10px;
 
   .left {
