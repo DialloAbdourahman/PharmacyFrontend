@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
 import { useGlobalContext } from '../contexts/GlobalContext';
 import { SET_USER, START_LOADING, STOP_LOADING } from '../utils/actions';
@@ -12,7 +12,9 @@ const Login = () => {
   const [title, setTitle] = useState('customer');
 
   const navigate = useNavigate();
-  const { dispatch, setLoading, axios } = useAuthContext();
+  const location = useLocation();
+
+  const { dispatch, setLoading, axios, user } = useAuthContext();
   const { dispatch: dispatchGlobalContext } = useGlobalContext();
 
   const handleSubmit = async (e) => {
@@ -38,6 +40,12 @@ const Login = () => {
       dispatchGlobalContext({ type: STOP_LOADING });
     }
   };
+
+  if (location.state) {
+    if (location.state.prevRoute.pathname) {
+      return <Navigate to={location.state.prevRoute.pathname} replace />;
+    }
+  }
 
   return (
     <Wrapper>

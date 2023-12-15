@@ -1,12 +1,13 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 const ProtectSystemAdmin = ({ children }) => {
   const { user } = useAuthContext();
+  const prevRoute = useLocation();
 
   if (!user.email) {
-    return <Navigate to={'/login'} replace />;
+    return <Navigate to={'/login'} replace state={{ prevRoute }} />;
   }
 
   if (user.title !== 'systemAdmin') {
