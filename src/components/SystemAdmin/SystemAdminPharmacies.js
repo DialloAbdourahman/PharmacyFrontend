@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 // import { Pagination } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Person2RoundedIcon from '@mui/icons-material/Person2Rounded';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useGlobalContext } from '../../contexts/GlobalContext';
@@ -24,7 +26,7 @@ const SystemAdminPharmacies = () => {
   });
 
   const { axiosPrivate } = useAuthContext();
-  const { dispatch, adminSidebar } = useGlobalContext();
+  const { dispatch } = useGlobalContext();
 
   const getAllPharmacies = async () => {
     try {
@@ -60,9 +62,14 @@ const SystemAdminPharmacies = () => {
           placeholder='Search for a pharmacy'
         />
         <div className='buttons'>
-          <button></button>
+          <button>
+            <LogoutIcon />
+          </button>
+          <button>
+            <Person2RoundedIcon />
+          </button>
         </div>
-        <button onClick={() => setCreatePharmacy(true)}>Add a pharmacy</button>
+        {/* <button onClick={() => setCreatePharmacy(true)}>Add a pharmacy</button> */}
       </header>
       {pharmacies.length === 0 ? (
         <h1>No pharmacies available</h1>

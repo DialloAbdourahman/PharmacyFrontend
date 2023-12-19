@@ -2,7 +2,6 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 import Loading from '../Loading';
-import { useGlobalContext } from '../../contexts/GlobalContext';
 
 const ProtectSystemAdmin = ({ children }) => {
   const { user, refreshTokenLoading } = useAuthContext();

@@ -35,13 +35,10 @@ code {
 }
 
 .dashboard-header button {
-  padding: 10px 5px;
-  color: white;
-  font-size: 17px;
   border: none;
-  border-radius: 5px;
-  text-align: center;
-  background-color: #3c6579;
+  background-color: transparent;
+  background-color: blue;
+  margin-right: 2px;
 }
 
 .dashboard-table {
