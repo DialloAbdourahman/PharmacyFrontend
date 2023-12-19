@@ -22,6 +22,7 @@ const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [refreshTokenLoading, setRefreshTokenLoading] = useState(true);
 
   const axios = axiosInitial.create({
     baseURL: 'http://localhost:4000/api',
@@ -43,6 +44,8 @@ const AuthProvider = ({ children }) => {
       console.log('token refreshed ! mouf');
     } catch (error) {
       dispatch({ type: UNSET_USER });
+    } finally {
+      setRefreshTokenLoading(false);
     }
   };
 
@@ -67,6 +70,7 @@ const AuthProvider = ({ children }) => {
         dispatch,
         axios,
         axiosPrivate,
+        refreshTokenLoading,
       }}
     >
       {children}

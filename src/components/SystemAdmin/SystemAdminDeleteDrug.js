@@ -15,6 +15,7 @@ const SystemAdminDeleteDrug = ({ deleteDrug, setDeleteDrug, getAllDrugs }) => {
       getAllDrugs();
       setDeleteDrug({ show: false, drug: {} });
       alert('Drug has been deleted');
+      console.log(data);
     } catch (error) {
       console.log(error);
       alert('An error has occured');

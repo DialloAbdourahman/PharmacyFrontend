@@ -11,7 +11,6 @@ import { useGlobalContext } from '../contexts/GlobalContext';
 import { START_LOADING, STOP_LOADING } from '../utils/actions';
 
 const Products = () => {
-  const navigate = useNavigate();
   const { state } = useLocation();
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState([]);

@@ -124,7 +124,4 @@ const SystemAdminDrugs = () => {
 
 export default SystemAdminDrugs;
 
-const Wrapper = styled.section`
-  width: 85%;
-  padding: 20px;
-`;
+const Wrapper = styled.section``;

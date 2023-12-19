@@ -4,8 +4,10 @@ import {
   START_LOADING,
   STOP_LOADING,
   ADD_TO_CART,
-  OPEN_SYSTEM_ADMIN_SIDEBAR,
-  CLOSE_SYSTEM_ADMIN_SIDEBAR,
+  OPEN_ADMIN_SIDEBAR,
+  CLOSE_ADMIN_SIDEBAR,
+  OPEN_ADDITIONAL_ADMIN_SIDEBAR,
+  CLOSE_ADDITIONAL_ADMIN_SIDEBAR,
 } from '../utils/actions';
 
 const globalReducer = (state, action) => {
@@ -39,12 +41,44 @@ const globalReducer = (state, action) => {
     return { ...state, categories: action.payload };
   }
 
-  if (action.type === OPEN_SYSTEM_ADMIN_SIDEBAR) {
-    return { ...state, systemAdminSidebar: true };
+  if (action.type === OPEN_ADMIN_SIDEBAR) {
+    return {
+      ...state,
+      adminSidebar: {
+        ...state.adminSidebar,
+        sidebar: true,
+      },
+    };
   }
 
-  if (action.type === CLOSE_SYSTEM_ADMIN_SIDEBAR) {
-    return { ...state, systemAdminSidebar: false };
+  if (action.type === CLOSE_ADMIN_SIDEBAR) {
+    return {
+      ...state,
+      adminSidebar: {
+        ...state.adminSidebar,
+        sidebar: false,
+      },
+    };
+  }
+
+  if (action.type === OPEN_ADDITIONAL_ADMIN_SIDEBAR) {
+    return {
+      ...state,
+      adminSidebar: {
+        ...state.adminSidebar,
+        additionalSidebar: true,
+      },
+    };
+  }
+
+  if (action.type === CLOSE_ADDITIONAL_ADMIN_SIDEBAR) {
+    return {
+      ...state,
+      adminSidebar: {
+        ...state.adminSidebar,
+        additionalSidebar: false,
+      },
+    };
   }
 
   return new Error(`No matching "${action.type}" - action type`);

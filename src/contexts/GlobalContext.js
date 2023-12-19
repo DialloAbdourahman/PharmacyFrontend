@@ -11,9 +11,10 @@ const initialState = {
   loading: false,
   categories: [],
 
-  systemAdminSidebar: true,
-  pharmacyAdminSidebar: true,
-  cashierSidebar: true,
+  adminSidebar: {
+    sidebar: true,
+    additionalSidebar: true,
+  },
 };
 
 const GlobalContext = createContext();

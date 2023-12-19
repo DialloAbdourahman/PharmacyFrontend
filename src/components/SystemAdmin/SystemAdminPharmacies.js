@@ -7,12 +7,7 @@ import { useGlobalContext } from '../../contexts/GlobalContext';
 import SystemAdminCreatePharmacy from './SystemAdminCreatePharmacy';
 import SystemAdminDeletePharmacy from './SystemAdminDeletePharmacy';
 import SystemAdminUpdatePharmacy from './SystemAdminUpdatePharmacy';
-import {
-  STOP_LOADING,
-  START_LOADING,
-  CLOSE_SYSTEM_ADMIN_SIDEBAR,
-  OPEN_SYSTEM_ADMIN_SIDEBAR,
-} from '../../utils/actions';
+import { STOP_LOADING, START_LOADING } from '../../utils/actions';
 
 const SystemAdminPharmacies = () => {
   const [pharmacies, setPharmacies] = useState([]);
@@ -29,7 +24,7 @@ const SystemAdminPharmacies = () => {
   });
 
   const { axiosPrivate } = useAuthContext();
-  const { systemAdminSidebar, dispatch } = useGlobalContext();
+  const { dispatch, adminSidebar } = useGlobalContext();
 
   const getAllPharmacies = async () => {
     try {
@@ -54,15 +49,9 @@ const SystemAdminPharmacies = () => {
   }, [name, page]);
 
   return (
-    <Wrapper style={{ width: `${systemAdminSidebar ? '85%' : '95%'}` }}>
-      <button onClick={() => dispatch({ type: CLOSE_SYSTEM_ADMIN_SIDEBAR })}>
-        close
-      </button>
-      <button onClick={() => dispatch({ type: OPEN_SYSTEM_ADMIN_SIDEBAR })}>
-        open
-      </button>
+    <Wrapper>
       <header className='dashboard-header'>
-        <h1>All pharmacies</h1>
+        <h1>Pharmacies</h1>
         <input
           type='text'
           id='name'
@@ -70,6 +59,9 @@ const SystemAdminPharmacies = () => {
           onChange={(e) => setName(e.target.value)}
           placeholder='Search for a pharmacy'
         />
+        <div className='buttons'>
+          <button></button>
+        </div>
         <button onClick={() => setCreatePharmacy(true)}>Add a pharmacy</button>
       </header>
       {pharmacies.length === 0 ? (
@@ -155,6 +147,4 @@ const SystemAdminPharmacies = () => {
 
 export default SystemAdminPharmacies;
 
-const Wrapper = styled.section`
-  padding: 20px;
-`;
+const Wrapper = styled.section``;

@@ -13,7 +13,7 @@ const Loading = () => {
           color: 'var(--orange)',
         }}
       /> */}
-      <h1>LAODING ...</h1>
+      <h1>LOADING ...</h1>
     </Wrapper>
   );
 };
