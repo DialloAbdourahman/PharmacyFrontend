@@ -15,6 +15,8 @@ const initialState = {
     sidebar: true,
     additionalSidebar: true,
   },
+  blurBg: false,
+  showUpdateProfile: false,
 };
 
 const GlobalContext = createContext();

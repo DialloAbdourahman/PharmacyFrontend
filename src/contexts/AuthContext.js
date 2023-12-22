@@ -71,6 +71,7 @@ const AuthProvider = ({ children }) => {
         axios,
         axiosPrivate,
         refreshTokenLoading,
+        refreshToken,
       }}
     >
       {children}

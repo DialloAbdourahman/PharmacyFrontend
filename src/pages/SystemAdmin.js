@@ -78,6 +78,7 @@ const Wrapper = styled.section`
 
   .content {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     ${(props) =>
       props.adminSidebar.sidebar ? 'margin: 20px;' : 'margin: 40px;'};
@@ -97,7 +98,9 @@ const Wrapper = styled.section`
   }
 
   .content section {
-    flex-grow: 1;
+    width: 100%;
     margin-top: 30px;
+    ${(props) =>
+      !props.adminSidebar.sidebar && 'width:95%; align-self:flex-end;'};
   }
 `;

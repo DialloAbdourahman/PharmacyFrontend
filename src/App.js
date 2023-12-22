@@ -21,11 +21,14 @@ import Loading from './components/Loading';
 import PharmacyAdminProducts from './components/PharmacyAdmin/PharmacyAdminProducts';
 import PharmacyAdminCashiers from './components/PharmacyAdmin/PharmacyAdminCashiers';
 import Cart from './pages/Cart';
+import BlurBg from './components/BlurBg';
+import UpdateProfile from './components/UpdateProfile';
+import AdditionalAppComponents from './components/AdditionalAppComponents';
 
 function App() {
   return (
     <BrowserRouter>
-      <Loading />
+      <AdditionalAppComponents />
       <Routes>
         {/* GENERAL ROUTES */}
         <Route path='/' element={<Home />} />
@@ -67,5 +70,6 @@ function App() {
 
 export default App;
 
-// Refactor axios to use the custome axios hook.
-// Refactor all the global stuff to use useReducer.
+// Create the loading and message box component and start using it.
+// Remove all display block here and use conditional rendering. (questionable)
+// ask the kids to pull the backend too and prisma migrate.

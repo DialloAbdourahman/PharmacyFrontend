@@ -8,6 +8,10 @@ import {
   CLOSE_ADMIN_SIDEBAR,
   OPEN_ADDITIONAL_ADMIN_SIDEBAR,
   CLOSE_ADDITIONAL_ADMIN_SIDEBAR,
+  BLUR_BG,
+  UNBLUR_BG,
+  SHOW_UPDATE_PROFILE,
+  HIDE_UPDATE_PROFILE,
 } from '../utils/actions';
 
 const globalReducer = (state, action) => {
@@ -78,6 +82,34 @@ const globalReducer = (state, action) => {
         ...state.adminSidebar,
         additionalSidebar: false,
       },
+    };
+  }
+
+  if (action.type === BLUR_BG) {
+    return {
+      ...state,
+      blurBg: true,
+    };
+  }
+
+  if (action.type === UNBLUR_BG) {
+    return {
+      ...state,
+      blurBg: false,
+    };
+  }
+
+  if (action.type === SHOW_UPDATE_PROFILE) {
+    return {
+      ...state,
+      showUpdateProfile: true,
+    };
+  }
+
+  if (action.type === HIDE_UPDATE_PROFILE) {
+    return {
+      ...state,
+      showUpdateProfile: false,
     };
   }
 
